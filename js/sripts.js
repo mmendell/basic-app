@@ -1,57 +1,31 @@
+function newItem(){
+    let li = $('<li></li>');
+    let inputValue = $('#input').val();
+    li.append(inputValue);
 
-let groceryList = (function () {
-
-    let textarea = $('#textarea')
-    let addButton = $('#button');
-
-    function newItem() {
-
-        let inputValue = $('#input').val();
-        list.append(li);
-        li.append(inputValue);
-
-        if (inputValue === ' ') {
-            alert('you should enter something')
-        } else {
-            $('#list').append(li);
-        }
-
-        function crossOut() {
-            li.toggleClass('strike');
-        }
-
-        li.on('dblclick', function crossOut() {
-            li.toggleClass('strike');
-        });
-
-
-        function deleteListItem() {
-            li.addClass('delete');
-        }
-
-        li.on('click', function deleteListItem() {
-            li.toggleClass('delete');
-        });
-
-        let crossOutButton = $('<crossOutButton></crossOutButton>');
-        crossOutButton.append(document.createTextNode('X'));
-        li.append(crossOutButton);
-
-        crossOutButton.on('click', deleteListItem);
-        function deleteListItem() {
-            li.addClass('delete')
-        }
-
-
-        $('list').sortable();
+    if (inputValue === ''){
+        alert ('you gotta put something in!');
+    } else {
+        $('#list').append(li);
     }
 
-    addButton.on('click', e => {
-        inputValue.val('');
-        inputValue.focus();
-    })
-
-    return{
-        newItem: newItem
+    function crossOut() {
+        li.toggleClass("strike");
     }
-})
+     
+    li.on('dblclick', function crossOut(){
+        li.toggleClass("strike");
+    });
+
+    let crossOutButton = $('<crossOutBUtton></crossOutButton>');
+    crossOut.append(document.createTextNode('X'));
+    li.append(crossOutButton);
+
+    crossOutButton.on('click', deleteListItem);
+    function deleteListItem(){
+        li.addClass('delete');
+    }
+
+    $('list').sortable();
+    
+}
